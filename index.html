@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="home">
+            <h1>Contact Us</h1>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="button" id="submit-button">Submit</button>
+            </form>
+        </div>
+
+        <p id="confirmation-message"></p>
+    </main>
+    <div class="data" id="services" style="display: none;">
+        <h2>Our Services</h2>
+        <p>Here is a description of our services...</p>
+    </div>
+    <div class="data" id="contact" style="display: none;">
+        <h2>Contact US</h2>
+        <p>Mobile: 91xxxxxxxx</p>
+        <p>Mail: srixxx07@gmail.com</p>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            function showServices() {
+                $("#services").show();
+                $("html, body").animate({
+                    scrollTop: $("#services").offset().top
+                }, 500);
+            }
+
+
+            function showContact() {
+                $("#contact").show();
+                $("html, body").animate({
+                    scrollTop: $("#contact").offset().top
+                }, 500);
+            }
+
+
+            $("nav ul li a").click(function() {
+                const target = $(this).attr("href");
+                if (target === "#services") {
+                    showServices();
+                } else if (target === "#contact") {
+                    showContact();
+                } else {
+                    $(target).get(0).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
